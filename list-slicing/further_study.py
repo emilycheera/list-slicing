@@ -110,6 +110,8 @@ def custom_insert(input_list, index, value):
             custom_append(after_idx, input_list[idx])
     input_list[index + 1:] = after_idx
 
+    # input_list[index:index] = [value]
+
 
 def custom_remove(input_list, value):
     """Remove the first item of the value in list.

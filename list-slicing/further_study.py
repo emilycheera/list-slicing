@@ -102,8 +102,9 @@ def custom_insert(input_list, index, value):
 
     """
     after_idx = []
-    for idx in range(custom_len(input_list)+1):
+    for idx in range(custom_len(input_list)):
         if idx == index:
+            custom_append(after_idx, input_list[idx])
             input_list[idx] = value
         elif idx > index:
             custom_append(after_idx, input_list[idx])
@@ -126,8 +127,10 @@ def custom_remove(input_list, value):
 
     """
 
-    pass
-
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            del input_list[i]
+            break
 
 def custom_pop(input_list):
     """Remove the last item in the list and returns it.
@@ -144,8 +147,9 @@ def custom_pop(input_list):
         ['Jan', 'Feb']
 
     """
-
-    return None
+    last = input_list[-1]
+    del input_list[-1]
+    return last
 
 
 def custom_index(input_list, value):
@@ -160,8 +164,10 @@ def custom_index(input_list, value):
         1
 
     """
-
-    return 0
+    for i in range(custom_len(input_list)):
+        if input_list[i] == value:
+            return i
+            break
 
 
 def custom_count(input_list, value):
@@ -176,8 +182,11 @@ def custom_count(input_list, value):
         2
 
     """
-
-    return 0
+    count = 0
+    for item in input_list:
+        if item == value:
+            count += 1
+    return count
 
 
 def custom_reverse(input_list):
@@ -196,7 +205,10 @@ def custom_reverse(input_list):
 
     """
 
-    pass
+    reversed_list = input_list[::-1]
+    for i in range(custom_len(input_list)):
+        input_list[i] = reversed_list[i]
+
 
 
 def custom_contains(input_list, value):
@@ -215,8 +227,11 @@ def custom_contains(input_list, value):
         True
 
     """
-
-    return None
+    count = custom_count(input_list, value)
+    if count == 0:
+        return False
+    else:
+        return True
 
 
 def custom_equality(some_list, another_list):
@@ -235,7 +250,14 @@ def custom_equality(some_list, another_list):
 
     """
 
-    return None
+    if custom_len(some_list) == custom_len(another_list):
+        for i in range(custom_len(some_list)):
+            if some_list[i] != another_list[i]:
+                return False
+        return True
+    else:
+        return False
+
 
 
 ##############################################################################
